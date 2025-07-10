@@ -1,4 +1,7 @@
-# References {.unnumbered}
+# Referências {.unnumbered}
 
-::: {#refs}
-:::
+Chambers, J. M. (2008). *Software for data analysis: programming with R* (Vol. 2, No. 1). New York: Springer.
+
+Crawley, M. J. (2014). *Statistics: an introduction using R*. John Wiley & Sons.
+
+Micheaux, P. L., Drouilhet, R., & Liquet, B. (2014). *The R software: fundamentals of programming and statistical analysis* (Vol. 40). Springer Science & Business.

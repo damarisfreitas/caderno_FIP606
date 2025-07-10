@@ -1,0 +1,1713 @@
+![](images/R_logo-02.svg){style="float: right" width="63" height="45"}
+
+# Funcionalidades R
+
+# Pacotes no R
+
+Os pacotes são conjuntos organizados de **funções**, **dados** e **documentação** que aprimora as funções básicas do programa R. São fundamentais para análises estatísticas, visualizalição de dados, dentre outras tarefas. As funções dos pacotes auxilia na determinação dos códigos, evitando que os mesmos sejam determinados do zero. Alguns pacotes fornecem dados para demonstração e prática do programa.
+
+![](images/icon-packages-01.jpg){style="float: center" fig-align="center" width="330"}
+
+Os pacotes são disponibilizados por meio de repertórios. Os principais são:
+
+-   **CRAN** (Cpmprehensive R Archive Network): é o mais utilizado.
+-   **Bioconductor**: fornece pacotes para análises de dados genômicos e biológicos.
+-   **GitHub**: site que reune repositórios git que estão em desenvolvimento antes (ou em vez de) disponibiliza-los ao CRAN.
+
+## Principais pacotes R
+
+Os principais pacotes R estão listados abaixo, bem como uma breve descrição sobre a sua funcionalidade.
+
+### Análise estatística em agricultura e experimentos
+
+`agricolae` - Métodos estatísticos aplicados a experimentaão agrícola (ex: ANOVA, DIC, DBC, Scott-Knott).
+
+`epifitter` - Fornece ajuste e comparação de curvas epidêmicas em fitopatologia.
+
+`ec50estimator` - Estima a concentração eficaz (ex: CL50, CE50) para curvas dose-resposta (comum em toxicologia e ensaio de inseticidas)
+
+`drc` - Modelagem de curvas dose-resposta.
+
+### Visualização de dados
+
+`ggplot2` - Confecção de gráficos.
+
+`ggpubr` - Facilita a criação de gráficos para publicações (baseado no `ggplot2`) e adiciona testes estatísticos.
+
+`ggthemes` - Adiciona temas aos gráficos gerados pelo `ggplot2`.
+
+`patchwork` - Combina dois gráficos `ggplot2` em uma figura.
+
+`ggspatial` - Adiciona elementes cartográficos a mapas `ggpplot2`.
+
+### Importação e exportação de dados
+
+`readxl` - Leitura de arquivos `.xls` e `.xlsx`.
+
+`writexl` - Exporta os dados do R para planilha Excel (`.xlsx`).
+
+`gsheet` - Leitura de planilhas disponíveis na nuvem (via URL).
+
+### Manipulação e limpeza de dados
+
+`tidyverse` - Coleção de pacotes (inclui `dplyr`, `ggplot2`, `tidyr`, `readr`, `purrr`, `tibble`, etc.).
+
+`janitor` - Limpeza de dados, especialmente tabelas (ex: remoção de colunas vazias, padronizar nomes de colunas, verificar duplicatas, etc.).
+
+`dt` - Tabelas interativas em HTML para visualização de dados.
+
+### Estatística descritiva e inferencial
+
+`report` - Gera relatórios para interpretação de modelos estatíticos.
+
+`rstatix` - Realiza testes estatísticos (test t, ANOVA, post-hoc, correlações).
+
+`emmeans` - Médias marginais estimadas (usado em análises pós-modelo).
+
+`multcomp` - Comparações mútiplas de médias (ex: Tukey, Dunnett).
+
+`multcompView` - Cria os agrupamentos significativos em relação a média.
+
+`mass` - Modelos estatísticos e de regressão.
+
+`car` - Ferramenta para regressão, testes de hipóteses e diagnóstico de modelos.
+
+`DHARMa` - Diagnóstico de resíduos de modelos GLM/GLMM.
+
+`performance` - Avalia e compara o desempenho de modelos estatísticos (ex: AIC).
+
+### Mapas e dados espaciais
+
+`rnaturalearth` - Dados geográficos (países, estados, fronteiras).
+
+`rnaturalearthhires` - Versão com alta resolução dos dados do `rnaturalearth`.
+
+## Instalação e carregamento dos pacotes
+
+Antes de utilizar um pacote no R, é necessário a sua instalação. A instalação é realizada apenas uma vez, ficando disponível no sistema para uso futuro. Para instalação do pacote, utiliza-se a função `install.packages()`.
+
+Após a instalação, para utilizar um pacote no R, é necessário carregá-lo por meio da função `library()`. No chunk abaixo temos um exemplo de carregamento de um pacote, e criação de um vetor com base em dados inseridos manualmente.
+
+```{r}
+library(agricolae)
+dates <- c(14,21,28)
+severity <- c(40,80,90)
+```
+
+```{r}
+dates
+```
+
+```{r}
+severity
+```
+
+## Funções e operadores importantes
+
+As funções são blocos de código que executam tarefas específicas. As operações importantes no R são realizadas através de uma função. Os operadores são símbolos especiais que realizam funções básicas. Abaixo encontramos as principais funções e operadores utilizados no ambiente R.
+
+### Operadores e manipulação de objetos
+
+`<-` : Operador de atribuição. Criação de objetos no R (vetores, data frames, funções, etc).
+
+`$` : Acesso a coluna de um data frame ou lista.
+
+`attach()`: Acessa diretamente as colunas de dados pelo nome.
+
+`detach()`: Desfaz o `attach()`.
+
+### Manipulação de dados
+
+`|>` : Pipe. Permite encadear funções de forma legível.
+
+`mutate()`: Adiciona ou modifica colunas em um data frame.
+
+`group_by`: Agrupa dados por uma ou mais variáveis para operações subsequentes.
+
+`count()`: Conta ocorrências de combinações de variáveis.
+
+`filter()`: Filtra linhas com base em condições.
+
+`select()`: Seleciona colunas específicas.
+
+`pull()`: Extrai uma coluna como vetor.
+
+`rbind()`: Junta data frames por linhas.
+
+`pivot_winder()`: Utilizado no pacote `tidyr`. Transforma dados de formato longo para formato largo.
+
+`tabyl()`: Utilizado no pacote `janitor`. Cria tabelas de frequência de forma rápida e limpa.
+
+`gsheet2tbl()`: Utilizado no pacote `gsheet`. Importa planilhas diretamente do Google Sheets.
+
+### Visualização de dados
+
+`plot()`: Cria gráficos simples.
+
+`hist()`: Cria histograma de uma variável numérica.
+
+`ggplot()`: Utilizado no pacote `ggplot2`. Inicia a construção de gráficos mais complexos e detalhados.
+
+`interaction.plot()`: Cria gráfico de interação entre dois fatores em relação a uma variável resposta.
+
+`qqnorm()` e `qqline()`: Cria gráficos para avaliar a normalidade de resíduos.
+
+`pairs()`: Gera uma matriz de diagramas de dispersão entre variáveis numéricas.
+
+`datatable()`: Utilizado no pacote `DT`. Cria uma tabela interativa.
+
+### Estatística descritiva e testes
+
+`glimpse()`: Utiizado no pacote dplyr. Visualiza estrutura resumida de um data frame.
+
+`Shapiro.test()`: Teste de normalidade de Shapiro-Wilk.
+
+`var.test()`: Compara variâncias entre dois grupos.
+
+`bartlett.test()` e `levene_test()`: Testam homogeneidade de variâncias.
+
+`aov()`: Realiza ANOVA (análise de variância).
+
+`anova()`: Exibe resultados de modelos ajustados, como `aov()` ou `lm()`.
+
+`lm()`: Ajusta modelos lineares.
+
+`kruskal.test()`: Teste não paramétrico para comparação de medianas entre grupos.
+
+`cor()`e`cor.test()`: Calculam e testam correlações entre variáveis.
+
+`audpc()`: Utilizado no pacote `agricolae`. Calcula a área abaixo da curva de progresso da doença (AUDPC).
+
+### Modelagem e bioestatística
+
+`simulateResiduals()`: Utilizado no pacote `DHARMa`. Simula resíduos de modelos para verificação de suposições.
+
+`cv.model()`: Função para cálculo de coeficiente de variação de modelos.
+
+`cld()`: Utilizado no pacote `multcompView`. Gera letras para comparação de médias após testes como Tukey.
+
+`pwpm()`: Utilizado no pacote `emmeans`. Matriz de comparação de médias par a par.
+
+`lme4`: Pacote para modelos lineares mistos, usado com `lmer()`.
+
+`boxcox()`: Utilizado no pacote `MASS`. Encontra transformações adequadas para melhorar normalidade ou homocedasticidade.
+
+`confint()`: Calcula intervalos de confiança para parâmetros de modelos.
+
+`summary()`: Mostra um resumo estatístico de objetos no R, como modelos, vetores, data frames, etc.
+
+### Modelagem de dose-resposta
+
+`drm()`: Ajusta modelos de dose-resposta.
+
+`aic()`: Critério de informação de Akaike, usado para comparar modelos.
+
+`ed()`: Calcula doses efetivas.
+
+Abaixo e ao longo do capítulo temos a exemplificação dessas funções e operadores.
+
+```{r}
+dados <- Orange
+dados
+```
+
+```{r}
+dados2 <- dados 
+circ <- dados$circumference 
+circ
+```
+
+```{r}
+circ2 <- circ+10 
+circ2
+```
+
+```{r}
+dados 
+dados$logcirc <- log(dados$circumference) 
+dados$logcirc
+```
+
+```{r}
+dados 
+dados$circumference
+```
+
+```{r}
+attach(dados) 
+circumference
+```
+
+```{r}
+detach(dados) 
+```
+
+```{r}
+audpc(severity, dates)
+```
+
+```{r}
+data(corn)
+str(corn)
+```
+
+```{r}
+library(tidyverse)
+dates <- c(7,14,21,28,35, 42)
+severity <- c(0.1, 5, 10, 35, 50, 60)
+
+data_curva <- data.frame(dates, severity)
+data_curva
+```
+
+```{r}
+plot(dados)
+```
+
+```{r}
+plot(dados$circumference)
+```
+
+```{r}
+data(corn)
+str(corn)
+```
+
+# Dataframe
+
+O data frame é uma das principais estruturas de dados no R, muito utilizado para armazenar e manipular dados tabulares. É semelhante a uma planilha Excel.
+
+## **Importação de dados**
+
+A importação dos dados é uma das principais eatapas da análise de dados no R.
+
+## **Formas de importação de dados**
+
+## Dados R
+
+O R possui conjuntos de dados interno, prontos para serem usados como exemplos, focado principalmente em testes e no aprendizado. Abaixo temos um exemplo de importação de um conjunto de dados que está disponível no R.
+
+```{r}
+dados <- Orange
+Orange
+```
+
+```{r}
+plot(dados)
+```
+
+```{r}
+plot(dados$circumference)
+```
+
+## **Dados em formato Excel**
+
+Para importação dos dados em planilha do Excel do desktop é necessário ter instalado o pacote `readxl`, e utilizar a função `read_excel`.
+
+```{r}
+library(readxl)
+
+dados3 <- read_excel("dados-diversos.xlsx",
+                    sheet = "sensibilidade_fungicidas")
+
+dados3
+```
+
+```{r}
+read_excel("dados-diversos.xlsx",
+                    sheet = "fungicida_vaso")
+```
+
+```{r}
+antifungicos <- read_excel("dados-diversos.xlsx",
+                      sheet = "fungicida_vaso")
+
+antifungicos
+```
+
+```{r}
+campo <- read_excel("dados-diversos.xlsx","fungicida_campo")
+
+campo
+```
+
+```{r}
+milho <- read_excel("dados-diversos.xlsx","milho")
+
+milho
+```
+
+## Dados em formato CSV
+
+Para importação dos dados em planilha CSV do desktop é utilizada a função `read_csv`.
+
+```{r}
+curve <- read_csv("curve.csv")
+```
+
+## Dados no formato Google Sheets
+
+Para importação dos dados de planilha do Google Sheets é necessário ter instalado o pacote `gsheet`, e utilizar a função `gsheet2tbl`.
+
+```{r}
+library(gsheet)
+dados_mg <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=983033137#gid=983033137")
+
+dados_mg
+```
+
+```{r}
+survey <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=1118819738#gid=1118819738")
+
+survey
+```
+
+```{r}
+mg <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=983033137#gid=983033137")
+
+mg
+```
+
+```{r}
+micelial <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=959387827#gid=959387827")
+
+micelial
+```
+
+```{r}
+dat_mg <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=983033137#gid=983033137")
+
+dat_mg
+```
+
+```{r}
+escala <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=1729131173#gid=1729131173")
+
+escala
+```
+
+```{r}
+micelial <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=959387827#gid=959387827")
+
+micelial
+```
+
+```{r}
+estande <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=401662555#gid=401662555")
+
+estande
+```
+
+```{r}
+fungi <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=465348652#gid=465348652")
+
+fungi
+```
+
+## Salvar planilha do R
+
+Para salvar dados do R no formato Excel é utilizado a função `write_xlsx`. Já para salvar no formato csv é utilizado a função `write_csv`.
+
+```{r}
+library(writexl)
+
+write_xlsx(curve, "curva2.xlsx")
+write_csv(curve, "curve2.csv")
+```
+
+## Manipulação dos dados importados
+
+Os dados inseridos no R para melhor análise podem ser organizados, transformados e preparados de acordo com a sua finalidade.
+
+-   Resumo dos dados contando quantas vezes eles aparecem
+
+```{r}
+survey |> 
+  group_by(state, residue) |>
+  count()
+```
+
+-   Separa os dados
+
+```{r}
+RS <- survey |>
+  filter(state == "RS")
+
+PR <- survey |>
+  filter(state == "PR")
+```
+
+![](images/clipboard-1945373953.png)
+
+-   Reúne subconjuntos de dados em um único conjunto
+
+```{r}
+combinado <- rbind(RS, PR)
+```
+
+![](images/clipboard-1406580553.png)
+
+-   Redução da dimensão dos dados
+
+```{r}
+survey_b <- survey |> 
+  dplyr::select(year, state, species)
+```
+
+![](images/clipboard-2018079336.png)
+
+-   União de funções para organização dos dados
+
+```{r}
+survey_2009 <- survey |> 
+  dplyr::select(year, state, species) |>
+  filter(year == 2009)
+```
+
+![](images/clipboard-2904373959.png)
+
+-   Resume e explora rapidamente a distribuição de categorias nos dados
+
+```{r}
+library(janitor)
+survey_b |>
+  tabyl(year,species)
+```
+
+-   Reestrutura os dados
+
+```{r}
+library(tidyverse)
+dat_mg2 <- dat_mg |> 
+  pivot_wider(names_from = trat, values_from = comp) |>
+  select(-rep)
+
+dat_mg2
+```
+
+# Gráficos em R
+
+## Visualização de dados em GGPLOT
+
+O `ggplot2` é o principal pacote para criação de gráficos no R. Utiliza a função `geom_` que define o tipo de gráfico. É possível adicionar aos gráficos personalizações, a fim de torná-los mais apresentáveis. Abaixo segue algumas funções `geom_`.
+
+![](images/clipboard-4185213815.png){fig-align="center"}
+
+```{r}
+data_curva |> 
+  mutate(severity2 = c(1, 10, 35, 58, 70, 79)) |>
+  ggplot(aes(dates, severity2))+
+  geom_col()+
+  #geom_area(fill = "blue")+
+  geom_line(linewidth = 2, color = "black")+ 
+  geom_point(size = 4, color = "black")+
+  theme_bw(base_size = 14)+
+  labs(x = "Dia após o plantio",
+       y = "Severidade (%)")+
+  scale_y_continuous(limits = c(0, 100), n.breaks = 10) +
+  scale_x_continuous(n.breaks = 8)
+```
+
+```{r}
+data_curva |> 
+  mutate(severity2 = c(1, 10, 35, 58, 70, 79)) |>
+  ggplot(aes(dates, severity2))+
+  geom_col()+
+  geom_area(fill = "blue")+
+  geom_line(linewidth = 2, color = "black")+ 
+  geom_point(size = 4, color = "black")+
+  theme_bw(base_size = 14)+
+  labs(x = "Dia após o plantio",
+       y = "Severidade (%)")+
+  scale_y_continuous(limits = c(0, 100), n.breaks = 10) +
+  scale_x_continuous(n.breaks = 8)
+```
+
+No `ggplot2` há a função `facet_wrap()` que faz a divisão do gráfico em vários painéis.
+
+```{r}
+survey_b |>
+  group_by(year, species) |>
+  count() |> 
+  ggplot(aes(species,n))+ 
+  geom_col()+
+  facet_wrap(~year)
+```
+
+```{r}
+survey_b |>
+  group_by(year, species) |>
+  count() |> 
+  ggplot(aes(year,n, fill = species, 
+             color = species))+ 
+  geom_col()+
+  #scale_fill_manual(values = c("red", "blue"))+
+  #scale_fill_grey()+ 
+  scale_color_viridis_d()
+
+# facet_wrap(~year)
+```
+
+```{r}
+survey_b |>
+  group_by(year, species) |>
+  count() |> 
+  ggplot(aes(year,n, fill = species, 
+             color = species))+ 
+  geom_col()+
+  scale_fill_manual(values = c("red", "blue"))+
+  #scale_fill_grey()+ 
+  scale_color_viridis_d()
+
+# facet_wrap(~year)
+```
+
+```{r}
+survey_b |>
+  group_by(year, species) |>
+  count() |> 
+  ggplot(aes(year,n, fill = species, 
+             color = species))+ 
+  geom_col()+
+  #scale_fill_manual(values = c("red", "blue"))+
+  scale_fill_grey()+ 
+  scale_color_viridis_d()
+
+# facet_wrap(~year)
+```
+
+```{r}
+survey_b |>
+  group_by(year, species) |>
+  count() |> 
+  ggplot(aes(year,n, fill = species, 
+             color = species))+ 
+  geom_col()+
+  #scale_fill_manual(values = c("red", "blue"))+
+  #scale_fill_grey()+ 
+  scale_color_viridis_d()+
+  facet_wrap(~year)
+```
+
+```{r}
+library(ggthemes)
+plot_mg <- mg |>
+  ggplot(aes(trat, comp))+ 
+  geom_boxplot(fill = "grey", 
+               outlier.colour = NA)+
+  geom_jitter(width = 0.1, color = "grey20")+
+  scale_y_continuous(limits = c(5,20))+
+  labs(x = "Tratamento",
+       y = "Comprimento (mm)")+
+  theme_minimal()
+
+plot_mg
+```
+
+```{r}
+plot_micelial <- micelial |>
+  ggplot(aes(reorder(especie, tcm),tcm))+ 
+  geom_boxplot(fill = "darkgreen", 
+               outlier.colour = NA)+
+  geom_jitter(width = 0.1, color = "grey20")+
+  scale_y_continuous(limits = c(0,2))+
+  labs(x = "", y = "Taxa de crescimento micelial (mm/dia)")+
+  theme_minimal()+
+  coord_flip()
+
+plot_micelial
+```
+
+```{r}
+dat_mg
+```
+
+```{r}
+dat_mg |> 
+  ggplot(aes(trat,comp))+ 
+  geom_jitter(width = 0.1)
+```
+
+Pode ser construido gráficos para visualização de diferenças entre grupos, distribuições e outliers. Assim como exemplicado no chunck abaixo.
+
+```{r}
+library(ggpubr)
+p <- ggboxplot(
+  dat_mg, x = "trat", y = "comp",
+  color = "trat", palette = "jco")
+
+p
+```
+
+Após realização de análises estatísticas para comparar médias entre grupos, como o teste t pode inserir o p-valor ao gráfico.
+
+```{r}
+library(rstatix)
+test <- t_test(comp ~ trat, data = dat_mg)
+test
+```
+
+```{r}
+p + stat_pvalue_manual(test, label = "p",
+y.position = 18)+
+  ylim(0,20)+
+  labs(x = "Tratamento", 
+       y = "Comprimento da lesão (mm)")
+```
+
+## Combinando gráficos
+
+Os gráficos criados podem ser colocados um ao lado do outro, a fim de comparar mais facilmente os dados.
+
+```{r}
+library(patchwork)
+(plot_mg | plot_micelial) +
+  plot_annotation(tag_levels = "a")
+```
+
+## Salvando gráficos
+
+Os gráficos confeccionados podem ser exportados em diferentes extensões e dimensões.
+
+```{r}
+ggsave("box.png", bg = "white", width = 5,
+       height = 5)
+
+ggsave("comb.png", bg = "white",
+       width = 8, height = 4)
+
+ggsave("plot2.png", bg = "white") 
+```
+
+# Análises estatísticas em R
+
+## Teste t
+
+O teste t é um dos testes estatísticos mais fundamentais e amplamente utilizados para comparar as médias de um ou dois grupos. Ele é um teste paramétrico, o que significa que ele faz certas suposições sobre a distribuição dos dados. Para que os resultados do teste t sejam válidos, algumas premissas devem ser atendidas:
+
+-   Normalidade
+
+-   Independência das observações
+
+-   Homogeneidade das variâncias (apenas para o teste t duas amostras independentes)
+
+```{r}
+attach(dat_mg2)
+t_results <- t.test(control, Mg2, 
+                    var.equal = FALSE) 
+
+library(report)
+report(t_results)
+```
+
+```{r}
+library(rstatix)
+test <- t_test(comp ~ trat, data = dat_mg)
+test
+```
+
+### Teste de normalidade dos dados
+
+**Teste de Shapiro-Wilk**: Este é um dos testes de normalidade mais recomendados, especialmente para amostras pequenas a moderadas (n \< 5000).
+
+-   **Hipótese Nula (H~0~)**: Os dados são normalmente distribuídos.
+
+-   **Hipótese Alternativa (H~a~)**: Os dados não são normalmente distribuídos.
+
+    ![](images/clipboard-1957655123.png)
+
+```{r}
+shapiro.test(Mg2)
+```
+
+```{r}
+shapiro.test(control)
+```
+
+```{r}
+hist(dat_mg2$Mg2)
+```
+
+```{r}
+hist(control)
+```
+
+```{r}
+var.test(dat_mg2$Mg2,
+         dat_mg2$control)
+```
+
+## Teste t para amostras dependentes
+
+O Teste t para amostras dependentes, também conhecido como Teste t Pareado ou Teste t para amostras relacionadas, é utilizado quando você quer comparar as médias de duas medições que vêm dos mesmos sujeitos ou de pares combinados. A chave aqui é a dependência entre as duas amostras. O teste t pareado tem algumas premissas:
+
+-   Independência dos pares
+
+-   Normalidade das diferenças
+
+-   Escala de intervalo/razão
+
+### Exemplo 1
+
+```{r}
+escala
+```
+
+```{r}
+t_test(acuracia ~ assessment,
+       data = escala,
+       paired = TRUE)
+```
+
+```{r}
+escala |> 
+  ggplot(aes(assessment, acuracia))+
+  geom_boxplot()
+```
+
+### Exemplo 2
+
+```{r}
+unaided <- escala |> 
+  filter(assessment == "Unaided") |>
+  select(acuracia) |>
+  pull ()
+
+unaided
+```
+
+```{r}
+aided <- escala |>
+  filter(assessment == "Aided1") |>
+  select(acuracia) |>
+  pull()
+
+aided
+```
+
+```{r}
+var.test(unaided,aided)
+```
+
+```{r}
+hist(unaided)
+```
+
+```{r}
+shapiro.test(unaided)
+```
+
+```{r}
+shapiro.test(aided)
+```
+
+```{r}
+t.test(unaided, aided, paired = TRUE,
+       var.equal = FALSE)
+```
+
+## Teste de Wilcoxon
+
+O teste de Wilcoxon tem o objetivo de comparar se duas amostras independentess vêm da mesma população ou de populações com medianas (ou distribuições) diferentes. É a alternativa não paramétrica ao teste t de duas amostras independentes.
+
+**Hipóteses:**
+
+-   **Hipótese Nula (H~0~)**: As distribuições das duas populações são as mesmas (ou as medianas são iguais).
+
+-   **Hipótese Alternativa (H~a~)**: As distribuições das duas populações são diferentes (ou as medianas são diferentes).
+
+```{r}
+wilcox.test(unaided, aided, paired = FALSE)
+```
+
+## Análise de variância - ANOVA
+
+A análise de variância (ANOVA) é um teste estatístico paramétrico utilizado para comparar as médias de três ou mais grupos independentes simultaneamente.
+
+```{r}
+micelial
+```
+
+```{r}
+micelial |> 
+  ggplot(aes(especie, tcm))+
+  geom_boxplot(oulier.colour = NA)+
+  geom_jitter(width = 0.1)
+```
+
+```{r}
+anova1 <- aov(tcm ~especie, data = micelial)
+
+anova1
+```
+
+```{r}
+anova2 <- lm(tcm ~ especie, data = micelial)
+
+anova2
+```
+
+```{r}
+anova(anova1)
+```
+
+```{r}
+anova(anova2)
+```
+
+### Premissas da ANOVA
+
+Para que os resultados da ANOVA sejam válidos, algumas premissas devem ser atendidas:
+
+-   Independência das observações
+
+-   Normalidade
+
+-   Homogeneidade das variâncias
+
+```{r}
+hist(residuals(anova1))
+```
+
+```{r}
+shapiro.test(residuals(anova1))
+```
+
+```{r}
+bartlett.test(tcm ~ especie, data = micelial)
+```
+
+```{r}
+levene_test(tcm ~ especie, data = micelial)
+```
+
+### Comparações entre grupos
+
+Para identificar diferenças entre pares de grupos, precisamos realizar comparações múltiplas.
+
+```{r}
+library(emmeans)
+
+m <- emmeans(anova2, ~ especie)
+m
+```
+
+```{r}
+library(multcomp)
+library(multcompView)
+cld(m)
+```
+
+```{r}
+pairs(m)
+```
+
+```{r}
+pwpm(m)
+```
+
+## Exemplo completo
+
+Abaixo se encontra um exemplo completo de uma análise completa utlizando conjunto de dados do R.
+
+```{r}
+insetos <- InsectSprays
+
+insetos
+```
+
+```{r}
+insetos |> 
+  ggplot(aes(spray, count))+
+  geom_boxplot(outlier.colour = NA)+
+  geom_jitter(width = 0.1)
+```
+
+```{r}
+bartlett.test(sqrt(count) ~ spray, data = insetos)
+```
+
+```{r}
+m2 <- lm(sqrt(count) ~ spray, data = insetos)
+```
+
+```{r}
+hist(residuals(m2))
+```
+
+```{r}
+shapiro.test(residuals(m2))
+```
+
+```{r}
+qqnorm(residuals(m2))
+qqline(residuals(m2))
+```
+
+```{r}
+library(performance)
+check_model(m2)
+```
+
+```{r}
+library(DHARMa)
+plot(simulateResiduals(m2))
+```
+
+## Alternativas para dados que violam os pressupostos
+
+### Transformação da resposta
+
+A transformação de dados é o processo de aplicar uma função matemática a uma variável em seu conjunto de dados. O objetivo principal é alterar a forma da distribuição da variável para torná-la mais adequada para certas análises estatísticas. Um exemplo de transformação é a raiz quadrada (`sqrt()`), que é muito utilizado para dados de contagem.
+
+```{r}
+m3 <- lm(sqrt(count) ~ spray, data = insetos)
+```
+
+```{r}
+hist(residuals(m3))
+```
+
+```{r}
+shapiro.test(residuals(m3))
+```
+
+```{r}
+qqnorm(residuals(m3))
+qqline(residuals(m3))
+```
+
+```{r}
+anova(m3)
+```
+
+```{r}
+m33 <- emmeans(m3, ~spray, type = "response")
+
+m33
+```
+
+```{r}
+cld(m33)
+```
+
+```{r}
+plot(m33)
+```
+
+#### Box cox
+
+Box cox é uma família de transformação de dados que inclui a logarítmica e a raiz quadrada como casos especiais. Inclui transformações de potência que é parametrizada por *lambda*.
+
+```{r}
+library(MASS)
+insects <- InsectSprays
+
+insects
+```
+
+```{r}
+m1 <- lm(count ~ spray, data = insects)
+```
+
+```{r}
+library(DHARMa)
+plot(simulateResiduals(m1))
+```
+
+```{r}
+boxcox(lm(insects$count + 0.1 ~ 1))
+```
+
+```{r}
+b <- boxcox(lm(insects$count + 0.1 ~ 1))
+
+lambda <- b$x[which.max(b$y)]
+lambda
+```
+
+```{r}
+library(tidyverse)
+Insects <- insects |>
+  mutate(count = as.numeric(count), 
+         count3 = sqrt(count))
+  
+Insects
+```
+
+```{r}
+insects$count2 <- (insects$count ^ lambda - 1) / lambda
+hist(insects$count)
+```
+
+### Teste não paramétrico
+
+#### Teste de Kruskal-Wallis
+
+O Teste de Kruskal-Wallis é um teste estatístico não paramétrico usado para determinar se há diferenças estatisticamente significativas entre as medianas de três ou mais grupos independentes. Ele é considerado a alternativa não paramétrica da (ANOVA) de um fator.
+
+**Hipóteses:**
+
+-   **Hipótese Nula (**H_0): As medianas (ou distribuições) de todos os grupos são iguais.
+
+-   **Hipótese Alternativa (**H_1): Pelo menos uma das medianas dos grupos é diferente das outras.
+
+```{r}
+kruskal.test(count ~ spray, data = insetos)
+```
+
+```{r}
+library(rstatix)
+kruskal_test(insetos, count ~spray)
+```
+
+```{r}
+library(agricolae)
+kruskal(insetos$count, insetos$spray, group = TRUE, 
+        console = TRUE)
+```
+
+\*Cada chunck contém uma forma de realização do teste de Kruskal.
+
+### Modelos lineares generalizados - GLMs
+
+Os modelos lineares generalizados (GLMs) são uma estrutura estatística flexível que permite modelar a relação entre uma variável resposta (dependente) e uma ou mais variáveis preditoras (independentes), mesmo quando a variável resposta não segue uma distribuição normal e/ou a relação não é estritamente linear. Eles são uma extensão dos modelos de regressão linear tradicionais.
+
+```{r}
+m4 <- glm(count ~ spray, data = insetos, 
+          family = poisson)
+```
+
+```{r}
+anova(m4)
+```
+
+```{r}
+library(car)
+Anova(m4)
+```
+
+```{r}
+library(DHARMa)
+plot(simulateResiduals(m4))
+```
+
+```{r}
+medias_m4 <- emmeans(m4, ~ spray, type = "response")
+
+medias_m4
+```
+
+```{r}
+library(multcomp)
+library(multcompView)
+cld(medias_m4)
+```
+
+## Anova fatorial
+
+A ANOVA Fatorial é uma extensão da ANOVA de um fator, usada quando você tem duas ou mais variáveis independentes categóricas (chamadas de "fatores") e uma variável dependente numérica (contínua).
+
+#### Exemplo 1
+
+Abaixo temos o exemplo de execução de uma ANOVA fatorial.
+
+```{r}
+antifungicos
+```
+
+```{r}
+interaction.plot(antifungicos$treat, antifungicos$dose, antifungicos$severity)
+```
+
+```{r}
+p1 <- antifungicos |>
+  ggplot(aes(factor(dose), severity*100))+
+  geom_jitter(width = 0.1)
+
+p1
+```
+
+```{r}
+p2 <- antifungicos |>
+  ggplot(aes(factor(treat), severity*100))+
+  geom_jitter(width = 0.1)
+
+p2
+```
+
+```{r}
+antifungicos |>
+  ggplot(aes(factor(dose), severity*100))+
+  geom_jitter(width = 0.1)+
+  facet_wrap(~ treat)
+```
+
+```{r}
+m_anti <- lm(severity ~ treat*dose, data = antifungicos)
+
+anova(m_anti)
+```
+
+```{r}
+library(DHARMa)
+plot(simulateResiduals(m_anti))
+```
+
+```{r}
+library(emmeans)
+media_anti <- emmeans(m_anti, ~ dose | treat)
+media_anti
+```
+
+```{r}
+cld(media_anti)
+```
+
+```{r}
+library(agricolae)
+cv.model(m_anti)
+```
+
+|          | 0.5     | 2.0  |
+|----------|---------|------|
+| LI       | 29.2 Aa | 5 Ab |
+| Tebu     | 2.1 Ba  | 2 Aa |
+| CV = 63% |         |      |
+
+#### Exemplo 2
+
+Abaixo temos o exemplo de execução de uma ANOVA fatorial.
+
+```{r}
+library(epifitter)
+oidio <- PowderyMildew
+
+oidio
+```
+
+```{r}
+library(ggplot2)
+oidio |>
+  ggplot(aes(factor(time), sev))+
+  geom_jitter(width = 0.1)+
+  facet_wrap(~ irrigation_type)
+```
+
+```{r}
+oidio2 <- oidio |>
+  dplyr::filter(irrigation_type %in% c("MS", "MS above canopy", 
+           "Overhead"))
+
+oidio2
+```
+
+```{r}
+oidio2 |>
+  ggplot(aes(time, sev))+
+  geom_point()+
+  facet_grid(moisture ~ irrigation_type)
+```
+
+```{r}
+oidio3 <- oidio2 |>
+  group_by(irrigation_type, moisture, block) |>
+  summarize(AUDPC = AUDPC(time, sev))
+
+oidio3
+```
+
+```{r}
+oidio3 |>
+  ggplot(aes(irrigation_type, 
+             AUDPC, color = moisture))+
+  geom_point(size = 2)+
+  scale_y_continuous(limits = c(0,20))
+```
+
+```{r}
+model_oidio <- lm(AUDPC ~ irrigation_type * moisture, 
+                  data = oidio3)
+
+model_oidio
+```
+
+```{r}
+anova(model_oidio)
+```
+
+```{r}
+plot(simulateResiduals(model_oidio))
+```
+
+```{r}
+medias_oidio <- emmeans(model_oidio, ~ irrigation_type | moisture)
+
+medias_oidio
+```
+
+```{r}
+cld(medias_oidio)
+```
+
+```{r}
+cv.model(model_oidio)
+```
+
+| Irrigation | H. moisture | M. moisture |
+|------------|-------------|-------------|
+| MS         | 8.52 Aa     | 11.18 Ab    |
+| MS AC      | 3.99 Ba     | 4.86 Bb     |
+| Overhead   | 3.68 Ba     | 3.81 Ca     |
+| CV = 6,41  |             |             |
+
+## ANOVA - Deliamento inteiramente casualizado
+
+A ANOVA pode ser realizado para outros delineamentos, como o delineamento inteiramente casualizado (DBC).
+
+```{r}
+campo
+```
+
+```{r}
+cor(campo$FER, campo$PROD)
+```
+
+```{r}
+cor.test(campo$FER, campo$DFC)
+```
+
+```{r}
+campo |>
+  ggplot(aes(FER, DFC))+
+  geom_point()+
+  geom_smooth(method = "lm")
+```
+
+```{r}
+campo |>
+  mutate(TRAT = factor(TRAT)) |>
+  ggplot(aes(TRAT, PROD))+
+  geom_jitter(widht = 0.1)+ 
+  stat_summary(
+    fun.data = "mean_cl_boot",
+    colour = "red", width = 0.3
+  )
+```
+
+```{r}
+campo$TRAT <- factor(campo$TRAT)
+
+campo$TRAT
+```
+
+```{r}
+campo$BLOCO <- factor(campo$BLOCO)
+
+campo$BLOCO
+```
+
+```{r}
+m_campo <- lm(log(FER) ~ BLOCO + TRAT, data = campo)
+
+m_campo
+```
+
+```{r}
+anova(m_campo)
+```
+
+```{r}
+library(DHARMa)
+plot(simulateResiduals(m_campo))
+```
+
+```{r}
+means_campo <- emmeans(m_campo, ~ TRAT, type = "response")
+
+means_campo
+```
+
+```{r}
+library(agricolae)
+cv.model(m_campo)
+```
+
+```{r}
+plot(means_campo)
+```
+
+```{r}
+library(multcomp)
+cld(means_campo)
+```
+
+```{r}
+pwpm(means_campo)
+```
+
+## Modelo misto - Delineamento em blocos com parcelas subdivididas
+
+Um modelo misto é um tipo de modelo estatístico que contém efeitos fixos e efeitos aleatórios. O delineamento em blocos com parcelas subdivididas (Split-Plot) é um delineamento experimental que surge quando há uma restrição na casualização de um ou mais fatores.
+
+```{r}
+milho
+```
+
+```{r}
+milho |>
+  ggplot(aes(hybrid, index, color = method))+
+  geom_jitter(widht = 0.1)+ 
+  coord_flip()
+```
+
+interação entre o hibrido e bloco
+
+```{r}
+milho$hybrid_block <- interaction(milho$hybrid, milho$block)
+
+milho$hybrid_block
+```
+
+fator único entre hibrido e bloco - uma coluna
+
+```{r}
+milho |> 
+  mutate(hybrid_block = interaction(hybrid, block))
+```
+
+```{r}
+library(lme4)
+m_milho <- lmer(index ~ hybrid*method +
+                  (1| block:hybrid_block), 
+                data = milho)
+```
+
+```{r}
+car::Anova(m_milho)
+```
+
+```{r}
+plot(simulateResiduals(m_milho))
+```
+
+```{r}
+media_milho <- emmeans(m_milho, ~ method | hybrid)
+
+media_milho
+```
+
+```{r}
+cld(media_milho, Letters = letters)
+```
+
+```{r}
+m_milho3 <- lmer(yield ~ hybrid*method +
+                  (1| block:hybrid_block), 
+                data = milho)
+```
+
+```{r}
+plot(simulateResiduals(m_milho3))
+```
+
+```{r}
+media_milho3 <- emmeans(m_milho3, ~ hybrid | method)
+
+media_milho3
+```
+
+```{r}
+cld(media_milho3, Letters = letters)
+```
+
+## Correlação
+
+A correlação é uma medida estatística que expressa a extensão em que duas variáveis estão linearmente relacionadas, ou seja, como elas tendem a mudar juntas. É uma ferramenta fundamental na estatística para descrever o relacionamento entre variáveis. Abaixo é exemplicado uma análise de relação entre o yield e index.
+
+```{r}
+milho |>
+  ggplot(aes(index, yield))+
+  geom_point()+
+  geom_smooth(method = "lm")
+```
+
+```{r}
+cor1 <- cor(milho$index, milho$yield)
+cor1*cor1*100
+```
+
+```{r}
+cor.test(milho$index, milho$yield)
+```
+
+## Análise de regressão
+
+A análise de regressão é uma das ferramentas estatísticas mais poderosas e amplamente utilizadas para investigar a relação entre variáveis. Seu principal objetivo é modelar como o valor de uma variável dependente (ou resposta) muda quando uma ou mais variáveis independentes (ou preditoras/explicativas) são alteradas.
+
+```{r}
+estande |>
+  ggplot(aes(trat,nplants))+
+  geom_point(color = "gray")+
+  geom_smooth(method = "lm", se = FALSE, 
+              color = "black")+
+  facet_wrap(~ exp)+
+  theme_minimal()+
+  labs(x = "% de inóculo na semente", 
+       y = "Número de plantas")
+```
+
+```{r}
+exp1 <- estande |>
+  filter(exp == 1)
+
+m_exp1 <- lm(nplants ~ trat + bloco, data = exp1)
+summary(m_exp1)
+```
+
+```{r}
+exp2 <- estande |>
+  filter(exp == 2)
+
+m_exp2 <- lm(nplants ~ trat, data = exp2)
+summary(m_exp2)
+```
+
+```{r}
+exp3 <- estande |>
+  filter(exp == 3)
+
+m_exp3 <- lm(nplants ~ trat, data = exp3)
+summary(m_exp3) 
+```
+
+## Modelo misto
+
+O modelo misto é uma extensão dos modelos lineares generalizados. Combina efeitos fixos e aleatórios na sua formulação.
+
+```{r}
+library(lme4)
+m_misto <- lmer(nplants ~ trat + (1 | exp/bloco), data = estande)
+
+confint(m_misto)
+```
+
+```{r}
+summary(m_misto)
+```
+
+```{r}
+library(car)
+car::Anova(m_misto)
+```
+
+```{r}
+estande |> 
+  ggplot(aes(trat, nplants, color = factor(exp)))+
+  geom_point()+
+  # geom_smooth(method = "lm", se = FALSE)+
+  geom_abline(intercept = 69.74,
+              slope = -0.568, linewidth = 2)+
+  geom_abline(intercept = 43, 
+              slope = -0.73, linetype = "dashed")+
+  geom_abline(intercept = 96, 
+              slope = -0.40, linetype = "dashed")
+```
+
+## Regressão não linear
+
+A regressão não linear é uma forma de análise de regressão na qual a relação entre a variável dependente (resposta) e a(s) variável(eis) independente(s) (preditoras) é modelada como uma função não linear.
+
+```{r}
+fungi |>
+  group_by(code, dose) |>
+  summarise(germination = mean(germination)) |>
+  ggplot(aes(dose, germination))+
+  geom_point()+
+  geom_line()+
+ # geom_smooth(se = FALSE)+
+  facet_wrap(~ code)
+```
+
+```{r}
+FGT43 <- fungi |>
+  group_by(code, dose) |>
+  summarise(germination = mean(germination)) |>
+  filter(code == "FGT43")
+
+FGT43
+```
+
+```{r}
+library(drc)
+m43 <- drm(germination ~ dose, 
+           data = FGT43,
+           fct = LL.3())
+
+summary(m43)
+```
+
+```{r}
+AIC(m43)
+```
+
+```{r}
+plot(m43)
+```
+
+```{r}
+ED(m43,50)
+```
+
+```{r}
+library(ec50estimator)
+
+df_ec50 = estimate_EC50(germination ~ dose,
+                        data = fungi, 
+                        isolate_col = "code",
+                        strata_col = "state",
+                        interval = "delta", 
+                        fct = drc::LL.3())
+
+df_ec50
+```
+
+```{r}
+df_ec50 |>
+  ggplot(aes(reorder(ID, Estimate), Estimate))+
+  geom_point()+
+  coord_flip()
+```
+
+```{r}
+df_ec50 |>
+  ggplot(aes(x = Estimate))+
+  geom_histogram(bins = 5, color = "white")
+```
+
+## Interpretação dos resultados
+
+O **p-valor** é uma medida de quão compatíveis seus dados são com a hipótese nula **(H~0~)**.
+
+-   **p-valor ≤ ⍺**: rejeitamos a hipótese nula.
+
+-   **p-valor \>** **⍺:** não rejeitamos a hipótese nula.
+
+\*O valor de ⍺ geralmente é 0.05.
+
+# Mapas
+
+No R é possível a confecção de mapas. A seguir observamos um exemplo dessa funcionalidade R.
+
+## Apresentação
+
+O conjunto de dados será o da ferrugem do café na Etiópia que está no arquivo de dados na nuvem.
+
+## Importação dos dados
+
+![](images/ferrugem%20cafe-04.jpg){style="float: right; margin: 15px" width="246" height="175"}
+
+Usaremos a função `gsheet2tbl( )` do pacote \[gsheet\] para carregar dos dados no ambiente.
+
+```{r}
+library(gsheet)
+
+cr <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1bq2N19DcZdtax2fQW9OHSGMR0X2__Z9T/edit?gid=1871397229#gid=1871397229")
+```
+
+## Visualização dos dados
+
+Usaremos a função `datatable()` do pacote \[DT\].
+
+```{r}
+library(DT)
+datatable(cr)
+```
+
+## Gráficos
+
+A latitude e a longitude podem ser visualizados por meio de gráfico `ggplot` antes da confecção do mapa.
+
+```{r}
+library(tidyverse)
+
+cr|> 
+  ggplot(aes(lon, lat))+
+  geom_point()
+```
+
+Com o auxílio do `ggplot` o mapa é construído.
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthhires)
+
+#remotes::install_github("ropensci/rnaturalearthhires")
+
+ETH <- ne_states(country = "Ethiopia",
+                 returnclass = "sf")
+
+library(tidyverse)
+library(ggthemes)
+library(ggspatial)
+
+ETH |>
+  ggplot()+
+  geom_sf(fill = "gray90")+
+  geom_point(data = cr, aes(lon, lat, color = inc))+
+  scale_color_viridis_c()+
+  theme_minimal()+
+  theme(legend.position = "bottom")+
+  annotation_scale(location = "tl") + 
+  annotation_north_arrow(location = "br", which_north = "true")+
+  labs(title = "Ferrugem do café na Etiópia", 
+       x = "Longitude", y = "Latitude", 
+       subtitle = "Levantamento em fazendas", 
+       caption = "Fonte: Del Ponte et al. (2025)", 
+       color = "Incidência (%)")
+#ggsave("mapa_etiopia.png", bg = "white", width = 10)
+```
+
+# Website
+
+Para a criação de um website em R com o quarto document é necessário seguir o passo a passo a seguir.
+
+-   No RStudio:
+
+    Vá em **File \> New Project \> New Directory \> Quarto Website**
+
+    Preencha o nome do projeto e diretório
+
+    Clique em "Create Project"
+
+-   Personalize o `_quarto.yml`: local para adição de temas, logotipo, favicon, links para redes sociais, etc.
+
+-   Nos arquivos `.qmd` (como `index.qmd`, `about.qmd`), você pode misturar texto, imagens e código R.
+
+-   Na função `render` do R o website é renderizado, abrindo uma visualização no navegador do projeto.
+
+-   Após finalizado o website ele deve ser publicado. O servidor GitHub é o mais recomendado, pois é fácil e gratuito. Porém existe outros servidores como o Netlify e RStudio Connect.
+
+Website com análise de eficiência de inseticidas no controle de lagartas da traça do tomateiro - <https://damarisfreitas.github.io/proj_final_606/>
+
+![](images/clipboard-3909311335.png){fig-align="center"}
+
+# App Shiny
+
+Para a criação de um App em Shiny é necessário inicialmente a instalação do pacote `shiny`. A seguir são mencionados os próximos passos:
+
+-   No RStudio:
+
+    Vá em **File \> New File \> Shiny Web App**
+
+    Escolha um nome e o diretório
+
+-   Em plataformas de inteligência artificial solicite o script de acordo com a aplicação que deseja determinar
+
+-   Clique no botão **"Run App"** no canto superior direito da janela do RStudio. O Shiny abrirá o app em uma aba do navegador.
+
+-   Para publicação do App, crie uma conta na plataforma shinyapps.io, onde é gerado um código para inserção no R.
+
+App de análises estatísticas com dados de eficiência de inseticidas - <https://leticiacaroline01.shinyapps.io/Apptrab/>
+
+![](images/clipboard-2278525821.png){fig-align="center"}

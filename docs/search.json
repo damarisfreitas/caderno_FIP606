@@ -1,42 +1,32 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Livroaulas",
-    "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
-    "crumbs": [
-      "Preface"
-    ]
-  },
-  {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "4  Conclusão",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "text": "Ao longo deste caderno de aulas, exploramos os fundamentos da análise e visualização de dados. Utilizando a linguagem R como ferramenta principal, percorremos desde a organização e limpeza de dados até a construção de gráficos informativos e análises estatísticas robustas, sempre com o olhar voltado para problemas reais enfrentados na pesquisa e manejo.\nA familiaridade com técnicas como análises de variância, testes estatísticos não paramétricos, modelagem e visualização gráfica permite ao profissional uma interpretação mais crítica e fundamentada dos dados experimentais. Isso é essencial não apenas para a condução de pesquisas científicas de qualidade, mas também para a tomada de decisões em contextos produtivos e de manejo.\nAlém do domínio técnico, este material buscou incentivar a autonomia no uso do R e de seus diversos pacotes, promovendo uma abordagem integrada e reprodutível na análise de dados. Espera-se que os conteúdos aqui reunidos sirvam de base sólida para futuras investigações, análises e relatórios, e que inspirem a constante atualização frente às inovações metodológicas e computacionais na área.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Conclusão</span>"
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "01-intro.html",
+    "href": "01-intro.html",
+    "title": "2  Introdução",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "Bem-vindo(a) ao mundo do R! Se você chegou até aqui, é provável que esteja buscando uma ferramenta poderosa para lidar com dados, seja para análise estatística ou visualização de dados. Você está no lugar certo!\nO R é muito mais do que apenas um software; ele é uma linguagem de programação e um ambiente para computação estatística e gráficos. Desenvolvido originalmente por Ross Ihaka e Robert Gentleman na Universidade de Auckland, Nova Zelândia, o R se tornou uma das linguagens mais populares e respeitadas na comunidade científica, acadêmica e empresarial.\nPor que o R é tão especial?\n\nGratuito e de Código Aberto: Uma das maiores vantagens do R é ser totalmente gratuito e ter seu código aberto. Isso significa que qualquer pessoa pode usá-lo, modificá-lo e distribuir suas próprias versões, promovendo uma comunidade vibrante e colaborativa.\nPoder Estatístico Inigualável: O R foi construído por estatísticos para estatísticos. Ele oferece uma vasta gama de técnicas estatísticas, desde os testes mais básicos (como o teste t e ANOVA) até os modelos mais avançados (regressão, modelos mistos, séries temporais, aprendizado de máquina).\nGráficos Incríveis: Com pacotes como o ggplot2, o R permite criar visualizações de dados de altíssima qualidade, desde gráficos simples até mapas complexos e infográficos interativos, ajudando você a contar histórias com seus dados.\nComunidade Ativa e Vasta Coleção de Pacotes: A força do R reside em sua comunidade global. Milhares de usuários e desenvolvedores criam e compartilham pacotes (extensões do R que adicionam novas funcionalidades). Seja qual for a sua necessidade – análise espacial, web scraping, relatórios automáticos – é muito provável que já exista um pacote para isso.\nReprodutibilidade: Com ferramentas como o R Markdown, você pode combinar código, resultados e texto em um único documento, tornando suas análises totalmente reprodutíveis e transparentes.\n\nPara quem é o R?\nO R é a escolha de profissionais e estudantes em diversas áreas:\n\nCientistas de Dados e Analistas: Para explorar, limpar, modelar e visualizar grandes volumes de dados.\nPesquisadores Acadêmicos: Em biologia, medicina, economia, ciências sociais, agronomia e muitas outras, para analisar experimentos e coletar insights.\nEstatísticos: Para desenvolver e aplicar métodos estatísticos avançados.\nProfissionais de Negócios: Para inteligência de mercado, segmentação de clientes, previsão de vendas e tomada de decisões baseada em dados.\n\nComeçar com o R pode parecer desafiador no início, como qualquer nova linguagem. No entanto, a curva de aprendizado vale a pena pelo poder e pela flexibilidade que ele oferece. Com dedicação, você rapidamente estará realizando análises complexas e criando visualizações impressionantes.\nPronto(a) para iniciar sua jornada no R?",
     "crumbs": [
-      "References"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Caderno de aulas: Análise e visualização de dados em Fitopatologia (FIP 606)",
+    "section": "",
+    "text": "Bem-vindo!\nEste é um livro desenvolvido com Quarto. Ele trata dos assuntos ministrados na disciplina FIP 606 - Análise e Visualização de Dados em Fitopatologia no primeiro semestre de 2025.",
+    "crumbs": [
+      "Bem-vindo!"
     ]
   }
 ]

@@ -1,9 +1,3 @@
-# Preface {.unnumbered}
+# Bem-vindo! {.unnumbered}
 
-This is a Quarto book.
-
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-
-```{r}
-1 + 1
-```
+Este é um livro desenvolvido com Quarto. Ele trata dos assuntos ministrados na disciplina FIP 606 - Análise e Visualização de Dados em Fitopatologia no primeiro semestre de 2025.

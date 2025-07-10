@@ -10,5 +10,23 @@
   },
   "references.qmd": {
     "references.html": "376517ed"
+  },
+  "02-capitulo.qmd": {
+    "02-capitulo.html": "9de443c8"
+  },
+  "01-intro.qmd": {
+    "01-intro.html": "ff3b37d1"
+  },
+  "capa.qmd": {
+    "capa.html": "9d445c87"
+  },
+  "final.qmd": {
+    "final.html": "d64ae39d"
+  },
+  "Fim.qmd": {
+    "Fim.html": "04913a8d"
+  },
+  "Início.qmd": {
+    "Início.html": "ac5f01fa"
   }
 }
