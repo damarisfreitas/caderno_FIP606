@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: docs
+  
+book:
+  title: "Caderno de aulas: Análise e visualização de dados em Fitopatologia (FIP 606)"
+  author: "Damaris Freitas"
+  date: "07/10/2025"
+  chapters:
+    - Início.qmd
+    - index.qmd
+    - 01-intro.qmd
+    - 02-capitulo.qmd
+    - summary.qmd
+    - references.qmd
+    - Fim.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: litera
+  pdf:
+    documentclass: scrreprt
+
+execute:
+  message: false
+  warning: false
+
+editor: visual
+
