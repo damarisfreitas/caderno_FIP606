@@ -8,6 +8,7 @@ book:
   date: "07/10/2025"
   chapters:
     - Início.qmd
+    - index.qmd 
     - 01-intro.qmd
     - 02-capitulo.qmd
     - summary.qmd
